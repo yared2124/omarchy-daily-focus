@@ -1,0 +1,18 @@
+services:
+  # Development & Testing environment (runs 100% in Docker, zero host installation)
+  dev:
+    image: omarchy-focus-runner:latest
+    container_name: omarchy-daily-focus-dev
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: sh -c "echo 'Docker environment ready!'"
+
+  # Unit tests runner
+  test:
+    image: omarchy-focus-runner:latest
+    container_name: omarchy-daily-focus-test
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: node test/scheduler.test.js

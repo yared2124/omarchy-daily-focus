@@ -1,0 +1,44 @@
+{
+  "$schema": "https://omarchy.org/schemas/plugin-manifest.v1.json",
+  "id": "daily.focus",
+  "name": "Daily Focus",
+  "version": "1.0.0",
+  "description": "Daily and weekly goals in the Omarchy bar, with live target countdowns and one-click progress tracking.",
+  "author": "yared2124",
+  "license": "MIT",
+  "homepage": "https://github.com/yared2124/omarchy-daily-focus",
+  "entrypoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml"
+  },
+  "bar": {
+    "defaultSection": "center",
+    "resizable": false,
+    "tooltip": "Daily Focus & Goals"
+  },
+  "storage": {
+    "configPath": "~/.config/omarchy/focus/config.json",
+    "goalsPath": "~/.config/omarchy/focus/goals.json",
+    "statePath": "~/.local/state/omarchy/focus/state.json"
+  },
+  "permissions": {
+    "notifications": true,
+    "filesystem": [
+      "~/.config/omarchy/focus",
+      "~/.local/state/omarchy/focus"
+    ]
+  },
+  "defaultConfig": {
+    "barMode": "both",
+    "showSeconds": false,
+    "notify": true,
+    "reminderMinutes": 10,
+    "catchUpAlert": true,
+    "weekStart": "monday",
+    "workHours": {
+      "start": "08:00",
+      "end": "20:00"
+    }
+  }
+}
