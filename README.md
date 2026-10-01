@@ -1,6 +1,7 @@
 # 🎯 Omarchy Daily Focus (`daily.focus`)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/yared2124/omarchy-daily-focus/actions/workflows/ci.yml/badge.svg)](https://github.com/yared2124/omarchy-daily-focus/actions)
 [![Omarchy Shell](https://img.shields.io/badge/Omarchy-Plugin-blueviolet.svg)](#requirements)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](#privacy--architecture)
 
