@@ -2,7 +2,7 @@ import QtQuick 2.15
 
 /**
  * components/ProgressRing.qml
- * Clean, lightweight canvas-based radial progress ring.
+ * Clean, lightweight canvas-based radial progress ring (NestJS theme).
  * Smoothly animates when progress percentage updates.
  */
 Item {
@@ -10,10 +10,10 @@ Item {
 
     property real percentage: 0
     property real strokeWidth: 3.0
-    property color ringColor: "#89b4fa"
-    property color trackColor: "rgba(255, 255, 255, 0.15)"
+    property color ringColor: "#e0234e"
+    property color trackColor: "rgba(255, 255, 255, 0.10)"
     property string label: ""
-    property color textColor: "#cdd6f4"
+    property color textColor: "#ffffff"
 
     implicitWidth: 32
     implicitHeight: 32
