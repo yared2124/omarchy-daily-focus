@@ -116,4 +116,14 @@ console.log('🧪 Running Omarchy Daily Focus unit tests in Docker...\n');
   console.log('✓ Scheduler.detectMissedTargets (Catch-up on Resume) passed');
 }
 
+// 7. Theme: NestJS Color Palette Validation
+{
+  const { THEME } = require('../lib/Theme');
+  assert.strictEqual(THEME.primary, '#e0234e');
+  assert.strictEqual(THEME.bgPanel, '#12131a');
+  assert.strictEqual(THEME.success, '#10b981');
+  assert.strictEqual(THEME.textPrimary, '#ffffff');
+  console.log('✓ Theme.NestJS palette validation passed');
+}
+
 console.log('\n🎉 ALL TESTS PASSED SUCCESSFULLY IN DOCKER!');
