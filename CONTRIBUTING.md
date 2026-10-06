@@ -70,13 +70,15 @@ All test assertions must pass before submitting your pull request.
 
 ### QML Guidelines
 - **Target Qt Quick 2.15**: Maintain compatibility with Omarchy's Qt 5 / Qt 6 runtime bridge.
-- **Theme Consistency**: Use the standard Catppuccin Mocha color palette to harmonize with Omarchy defaults:
-  - Background: `#1e1e2e` / Card Background: `#181825`
-  - Text: Primary `#cdd6f4`, Muted `#a6adc8`, Subtext `#6c7086`
-  - Accent / Focus: `#89b4fa` (Blue), `#b4befe` (Lavender)
-  - Success / Done: `#a6e3a1` (Green)
-  - Alert / Overdue: `#f38ba8` (Red)
-  - Borders: `#313244` / `#45475a`
+- **Theme Consistency**: Use the NestJS design palette (dark obsidian surfaces with signature crimson ruby red accents):
+  - Background: `#12131a` / Card Background: `#181a24` / Hover Surface: `#222436`
+  - Text: Primary `#ffffff`, Muted `#94a3b8`, Subtext `#64748b`
+  - Brand Primary / Accent: `#e0234e` (NestJS Red), Hover: `#f43f5e`
+  - Success / Done: `#10b981` (Emerald Green)
+  - Warning / Normal Priority: `#f59e0b` (Amber Orange)
+  - Info / Low Priority: `#38bdf8` (Cyan Blue)
+  - Alert / Overdue: `#e0234e` (NestJS Red)
+  - Borders: `#2a2d3f` / Hover: `#3d4059` / Focus: `#e0234e`
 - **Declarative Layouts**: Prefer `RowLayout` and `ColumnLayout` over hard-coded absolute x/y coordinates.
 - **Component Modularity**: Reusable UI widgets (rings, list rows, badge buttons) should live in `components/`.
 
