@@ -3,9 +3,9 @@ import QtQuick.Layouts 1.15
 
 /**
  * components/GoalRow.qml
- * Interactive goal row for the planner panel:
+ * Interactive goal row for the planner panel (NestJS theme):
  * - One-click completion checkbox with strike-through animation.
- * - Priority badge (High, Normal, Low).
+ * - Priority badge (High, Normal, Low) in NestJS color scheme.
  * - Deadline / Schedule timestamp badge.
  * - Delete button.
  */
@@ -24,8 +24,8 @@ Rectangle {
     implicitWidth: 380
     implicitHeight: 48
     radius: 8
-    color: mouseArea.containsMouse ? "#313244" : "#181825"
-    border.color: root.isCompleted ? "#45475a" : (mouseArea.containsMouse ? "#585b70" : "#313244")
+    color: mouseArea.containsMouse ? "#222436" : "#181a24"
+    border.color: root.isCompleted ? "#2a2d3f" : (mouseArea.containsMouse ? "#3d4059" : "#2a2d3f")
     border.width: 1
 
     Behavior on color { ColorAnimation { duration: 150 } }
@@ -43,21 +43,26 @@ Rectangle {
             width: 20
             height: 20
             radius: 5
-            color: root.isCompleted ? "#a6e3a1" : "transparent"
-            border.color: root.isCompleted ? "#a6e3a1" : "#6c7086"
+            color: root.isCompleted ? "#10b981" : "transparent"
+            border.color: root.isCompleted ? "#10b981" : (checkboxMouse.containsMouse ? "#e0234e" : "#64748b")
             border.width: 2
+
+            Behavior on color { ColorAnimation { duration: 150 } }
+            Behavior on border.color { ColorAnimation { duration: 150 } }
 
             Text {
                 anchors.centerIn: parent
                 text: "✓"
                 font.pixelSize: 12
                 font.bold: true
-                color: "#11111b"
+                color: "#ffffff"
                 visible: root.isCompleted
             }
 
             MouseArea {
+                id: checkboxMouse
                 anchors.fill: parent
+                hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     if (root.goalData && root.goalData.id) {
@@ -74,7 +79,7 @@ Rectangle {
 
             Text {
                 text: root.title
-                color: root.isCompleted ? "#6c7086" : "#cdd6f4"
+                color: root.isCompleted ? "#64748b" : "#ffffff"
                 font.pixelSize: 13
                 font.bold: true
                 font.strikeout: root.isCompleted
@@ -85,12 +90,12 @@ Rectangle {
             RowLayout {
                 spacing: 6
 
-                // Priority Badge
+                // Priority Badge (NestJS Colors: High = Nest Red #e0234e, Normal = Amber #f59e0b, Low = Sky #38bdf8)
                 Rectangle {
                     implicitWidth: priorityText.implicitWidth + 8
                     implicitHeight: 16
                     radius: 4
-                    color: root.priority === "high" ? "#f38ba8" : (root.priority === "low" ? "#89b4fa" : "#f9e2af")
+                    color: root.priority === "high" ? "#e0234e" : (root.priority === "low" ? "#38bdf8" : "#f59e0b")
                     opacity: root.isCompleted ? 0.4 : 0.9
 
                     Text {
@@ -99,14 +104,14 @@ Rectangle {
                         text: root.priority.toUpperCase()
                         font.pixelSize: 9
                         font.bold: true
-                        color: "#11111b"
+                        color: root.priority === "high" ? "#ffffff" : "#12131a"
                     }
                 }
 
                 // Deadline text
                 Text {
                     text: root.deadline ? root.deadline.substring(11, 16) : ""
-                    color: "#a6adc8"
+                    color: "#94a3b8"
                     font.pixelSize: 11
                     font.family: "monospace"
                     visible: root.deadline !== ""
@@ -119,14 +124,16 @@ Rectangle {
             width: 24
             height: 24
             radius: 12
-            color: deleteMouse.containsMouse ? "#f38ba8" : "transparent"
+            color: deleteMouse.containsMouse ? "#e0234e" : "transparent"
             opacity: deleteMouse.containsMouse ? 1.0 : (mouseArea.containsMouse ? 0.6 : 0.0)
+
+            Behavior on color { ColorAnimation { duration: 150 } }
 
             Text {
                 anchors.centerIn: parent
                 text: "✕"
                 font.pixelSize: 11
-                color: deleteMouse.containsMouse ? "#11111b" : "#a6adc8"
+                color: deleteMouse.containsMouse ? "#ffffff" : "#94a3b8"
             }
 
             MouseArea {
