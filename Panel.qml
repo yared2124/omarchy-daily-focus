@@ -7,7 +7,7 @@ import "lib/Scheduler.js" as Scheduler
 
 /**
  * Panel.qml
- * Full interactive planner panel:
+ * Full interactive planner panel (NestJS theme):
  * - Week-at-a-glance overview & real-time statistics.
  * - Daily goal backlog with one-click completion toggles.
  * - Quick goal entry form (title, priority, time).
@@ -19,8 +19,8 @@ Rectangle {
     implicitWidth: 440
     implicitHeight: 600
     radius: 12
-    color: "#1e1e2e"
-    border.color: "#313244"
+    color: "#12131a"
+    border.color: "#2a2d3f"
     border.width: 1
 
     property var service: null
@@ -109,7 +109,7 @@ Rectangle {
 
             Text {
                 text: "🎯 Daily Focus Planner"
-                color: "#cdd6f4"
+                color: "#ffffff"
                 font.pixelSize: 16
                 font.bold: true
                 Layout.fillWidth: true
@@ -119,12 +119,14 @@ Rectangle {
                 width: 28
                 height: 28
                 radius: 14
-                color: closeMouse.containsMouse ? "#313244" : "transparent"
+                color: closeMouse.containsMouse ? "#222436" : "transparent"
+
+                Behavior on color { ColorAnimation { duration: 150 } }
 
                 Text {
                     anchors.centerIn: parent
                     text: "✕"
-                    color: "#a6adc8"
+                    color: closeMouse.containsMouse ? "#ffffff" : "#94a3b8"
                     font.pixelSize: 13
                 }
 
@@ -143,8 +145,8 @@ Rectangle {
             Layout.fillWidth: true
             height: 60
             radius: 8
-            color: "#181825"
-            border.color: "#313244"
+            color: "#181a24"
+            border.color: "#2a2d3f"
 
             RowLayout {
                 anchors.fill: parent
@@ -164,7 +166,8 @@ Rectangle {
                         }
                         return Math.round((done / total) * 100);
                     }
-                    ringColor: "#a6e3a1"
+                    ringColor: percentage >= 100 ? "#10b981" : "#e0234e"
+                    trackColor: "rgba(255, 255, 255, 0.10)"
                 }
 
                 ColumnLayout {
@@ -173,7 +176,7 @@ Rectangle {
 
                     Text {
                         text: "Today's Target Progress"
-                        color: "#a6adc8"
+                        color: "#94a3b8"
                         font.pixelSize: 11
                     }
 
@@ -186,7 +189,7 @@ Rectangle {
                             }
                             return done + " of " + total + " completed (" + (total > 0 ? Math.round((done / total) * 100) : 0) + "%)";
                         }
-                        color: "#cdd6f4"
+                        color: "#ffffff"
                         font.pixelSize: 13
                         font.bold: true
                     }
@@ -203,8 +206,8 @@ Rectangle {
                 Layout.fillWidth: true
                 height: 38
                 radius: 6
-                color: "#181825"
-                border.color: goalInput.activeFocus ? "#89b4fa" : "#313244"
+                color: "#181a24"
+                border.color: goalInput.activeFocus ? "#e0234e" : "#2a2d3f"
                 border.width: 1
 
                 TextInput {
@@ -213,13 +216,13 @@ Rectangle {
                     anchors.leftMargin: 10
                     anchors.rightMargin: 10
                     verticalAlignment: TextInput.AlignVCenter
-                    color: "#cdd6f4"
+                    color: "#ffffff"
                     font.pixelSize: 13
                     selectByMouse: true
 
                     Text {
                         text: "Add a new focus goal..."
-                        color: "#6c7086"
+                        color: "#64748b"
                         font.pixelSize: 13
                         visible: !goalInput.text && !goalInput.activeFocus
                         anchors.verticalCenter: parent.verticalCenter
@@ -234,23 +237,39 @@ Rectangle {
 
             ComboBox {
                 id: priorityCombo
-                implicitWidth: 90
+                implicitWidth: 96
                 implicitHeight: 38
                 model: ["Normal", "High", "Low"]
+                background: Rectangle {
+                    color: "#181a24"
+                    border.color: priorityCombo.activeFocus ? "#e0234e" : "#2a2d3f"
+                    border.width: 1
+                    radius: 6
+                }
+                contentItem: Text {
+                    leftPadding: 10
+                    text: priorityCombo.displayText
+                    color: "#ffffff"
+                    font.pixelSize: 12
+                    font.bold: true
+                    verticalAlignment: Text.AlignVCenter
+                }
             }
 
             Rectangle {
                 width: 38
                 height: 38
                 radius: 6
-                color: addMouse.containsMouse ? "#b4befe" : "#89b4fa"
+                color: addMouse.containsMouse ? "#f43f5e" : "#e0234e"
+
+                Behavior on color { ColorAnimation { duration: 150 } }
 
                 Text {
                     anchors.centerIn: parent
                     text: "+"
                     font.pixelSize: 20
                     font.bold: true
-                    color: "#11111b"
+                    color: "#ffffff"
                 }
 
                 MouseArea {
@@ -287,7 +306,7 @@ Rectangle {
                 anchors.centerIn: parent
                 text: "No goals scheduled yet.\nAdd a target above or edit goals.json!"
                 horizontalAlignment: Text.AlignHCenter
-                color: "#6c7086"
+                color: "#64748b"
                 font.pixelSize: 13
                 visible: dailyModel.count === 0
             }
