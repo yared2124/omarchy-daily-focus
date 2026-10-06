@@ -1,5 +1,6 @@
 {
   "$schema": "https://omarchy.org/schemas/plugin-manifest.v1.json",
+  "schemaVersion": 1,
   "id": "daily.focus",
   "name": "Daily Focus",
   "version": "1.0.0",
@@ -7,10 +8,25 @@
   "author": "yared2124",
   "license": "MIT",
   "homepage": "https://github.com/yared2124/omarchy-daily-focus",
-  "entrypoints": {
-    "service": "Service.qml",
+  "kinds": [
+    "bar-widget",
+    "service",
+    "panel"
+  ],
+  "entryPoints": {
     "barWidget": "BarWidget.qml",
+    "service": "Service.qml",
     "panel": "Panel.qml"
+  },
+  "entrypoints": {
+    "barWidget": "BarWidget.qml",
+    "service": "Service.qml",
+    "panel": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Daily Focus",
+    "description": "Daily and weekly goals in the Omarchy bar, with live target countdowns and one-click progress tracking.",
+    "defaultSection": "center"
   },
   "bar": {
     "defaultSection": "center",
