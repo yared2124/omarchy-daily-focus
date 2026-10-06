@@ -167,7 +167,7 @@ Rectangle {
                         return Math.round((done / total) * 100);
                     }
                     ringColor: percentage >= 100 ? "#10b981" : "#e0234e"
-                    trackColor: "rgba(255, 255, 255, 0.10)"
+                    trackColor: "#1affffff"
                 }
 
                 ColumnLayout {
