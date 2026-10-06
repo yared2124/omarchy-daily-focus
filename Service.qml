@@ -135,10 +135,19 @@ Item {
     }
 
     function sendNotification(title, message) {
-        // Omarchy native desktop notification via CLI utility
-        var cmd = "omarchy-notification-send '" + title + "' '" + message + "'";
-        if (typeof Qt !== 'undefined' && Qt.openUrlExternally) {
-            // Invocation inside Omarchy Shell runtime
+        if (typeof omarchy !== 'undefined') {
+            if (typeof omarchy.notify === 'function') {
+                omarchy.notify(title, message);
+                return;
+            }
+            if (typeof omarchy.sendNotification === 'function') {
+                omarchy.sendNotification(title, message);
+                return;
+            }
+            if (typeof omarchy.execute === 'function') {
+                omarchy.execute("omarchy-notification-send", [title, message]);
+                return;
+            }
         }
     }
 
