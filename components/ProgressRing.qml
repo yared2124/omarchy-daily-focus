@@ -11,7 +11,7 @@ Item {
     property real percentage: 0
     property real strokeWidth: 3.0
     property color ringColor: "#e0234e"
-    property color trackColor: "rgba(255, 255, 255, 0.10)"
+    property color trackColor: "#1affffff"
     property string label: ""
     property color textColor: "#ffffff"
 
