@@ -101,7 +101,7 @@ Rectangle {
                 strokeWidth: 2.5
                 percentage: root.progress.percentage
                 ringColor: root.progress.percentage >= 100 ? "#10b981" : "#e0234e"
-                trackColor: "rgba(255, 255, 255, 0.10)"
+                trackColor: "#1affffff"
             }
 
             Text {
