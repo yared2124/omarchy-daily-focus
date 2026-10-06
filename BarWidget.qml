@@ -6,7 +6,7 @@ import "lib/Scheduler.js" as Scheduler
 
 /**
  * BarWidget.qml
- * The bar pill widget rendered in the Omarchy top bar:
+ * The bar pill widget rendered in the Omarchy top bar (NestJS theme):
  * - Left: Active focus target title & ticking countdown towards deadline.
  * - Right: Radial progress ring with completion score (e.g., 5/8 DONE).
  * - Click action: Toggles the goal planner panel.
@@ -14,12 +14,12 @@ import "lib/Scheduler.js" as Scheduler
 Rectangle {
     id: root
 
-    // Sizing & Theme defaults
+    // Sizing & Theme defaults (NestJS Palette)
     implicitWidth: contentRow.implicitWidth + 20
     implicitHeight: 30
     radius: height / 2
-    color: mouseArea.containsMouse ? "#313244" : "#1e1e2e"
-    border.color: mouseArea.containsMouse ? "#89b4fa" : "#45475a"
+    color: mouseArea.containsMouse ? "#222436" : "#181a24"
+    border.color: mouseArea.containsMouse ? "#e0234e" : "#2a2d3f"
     border.width: 1
 
     Behavior on color { ColorAnimation { duration: 150 } }
@@ -55,7 +55,7 @@ Rectangle {
             Text {
                 id: targetTitle
                 text: root.activeTarget ? root.activeTarget.title : "No active focus"
-                color: root.activeTarget ? "#cdd6f4" : "#a6adc8"
+                color: root.activeTarget ? "#ffffff" : "#94a3b8"
                 font.pixelSize: 12
                 font.bold: true
                 elide: Text.ElideRight
@@ -65,14 +65,14 @@ Rectangle {
             Rectangle {
                 width: 1
                 height: 12
-                color: "#45475a"
+                color: "#2a2d3f"
                 visible: root.activeTarget !== null
             }
 
             Text {
                 id: countdownText
                 text: root.countdown.formatted
-                color: root.countdown.isOverdue ? "#f38ba8" : "#a6e3a1"
+                color: root.countdown.isOverdue ? "#e0234e" : "#10b981"
                 font.pixelSize: 12
                 font.family: "monospace"
                 font.bold: true
@@ -84,7 +84,7 @@ Rectangle {
         Rectangle {
             width: 1
             height: 14
-            color: "#45475a"
+            color: "#2a2d3f"
             visible: root.barMode === "both"
         }
 
@@ -100,13 +100,13 @@ Rectangle {
                 height: 18
                 strokeWidth: 2.5
                 percentage: root.progress.percentage
-                ringColor: root.progress.percentage >= 100 ? "#a6e3a1" : "#89b4fa"
-                trackColor: "rgba(255, 255, 255, 0.12)"
+                ringColor: root.progress.percentage >= 100 ? "#10b981" : "#e0234e"
+                trackColor: "rgba(255, 255, 255, 0.10)"
             }
 
             Text {
                 text: root.progress.completed + "/" + root.progress.total
-                color: "#cdd6f4"
+                color: "#ffffff"
                 font.pixelSize: 11
                 font.bold: true
             }
